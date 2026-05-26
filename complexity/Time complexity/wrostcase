@@ -1,0 +1,5 @@
+2. Worst Case (O - Big O)
+The worst case is the absolute nightmare scenario. It represents the maximum number of steps the algorithm will ever take. This is the metric software engineers care about the most because it guarantees that the code will never perform worse than this line. We use the famous O (Big O) symbol for this.
+Example: Searching for that same card again.
+The Scenario: The card you want is the very last card in the deck, or it isn’t in the deck at all. You have to flip over every single card.
+Time Complexity: O(n) (Linear time, where n is the number of cards).

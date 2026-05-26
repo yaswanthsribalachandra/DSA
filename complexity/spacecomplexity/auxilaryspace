@@ -1,0 +1,65 @@
+**Auxiliary space** is the extra or temporary memory that an algorithm uses to solve a problem, **excluding** the memory required to hold the original input data.
+
+When you write a program, it needs memory to store the data you feed into it, but it also might need extra memory to do things like create temporary variables, store copies of data, or keep track of function calls. Auxiliary space focuses strictly on that extra memory.
+
+---
+
+### The Difference: Auxiliary Space vs. Space Complexity
+
+While they sound similar, programmers draw a sharp line between these two terms:
+
+* **Auxiliary Space:** Only the *extra* space allocated by the algorithm.
+* **Total Space Complexity:** The *input size* + the *auxiliary space*.
+
+### A Real-World Analogy
+
+Imagine you are a chef making a salad:
+
+* **The Input:** The lettuce, tomatoes, and cucumbers. They take up space on your counter regardless of what you do.
+* **The Auxiliary Space:** The extra bowls, cutting boards, and knives you pull out of the cupboard to chop and mix the salad. If you mix everything directly in the serving bowl, you use almost zero auxiliary space. If you use five different bowls to hold intermediate ingredients, your auxiliary space is high.
+
+---
+
+### Code Examples: $O(1)$ vs. $O(n)$ Auxiliary Space
+
+Let's look at two different ways to find the sum of an array to see how auxiliary space works in practice.
+
+#### 1. Constant Auxiliary Space ($O(1)$)
+
+This function uses a single loop and one variable to keep track of the total.
+
+```python
+def find_sum(arr):
+    total = 0  # Uses a tiny, fixed amount of extra memory
+    for num in arr:
+        total += num
+    return total
+
+```
+
+* **Input Space:** $O(n)$ because the size of `arr` depends on the input.
+* **Auxiliary Space:** $O(1)$ (Constant). No matter if the array has 10 items or 10 million items, we only ever create one extra variable (`total`).
+
+#### 2. Linear Auxiliary Space ($O(n)$)
+
+This function creates a completely new list to duplicate the data before summing it up.
+
+```python
+def find_sum_expensive(arr):
+    duplicate_list = []  # Creates a brand new list
+    for num in arr:
+        duplicate_list.append(num)
+    return sum(duplicate_list)
+
+```
+
+* **Input Space:** $O(n)$
+* **Auxiliary Space:** $O(n)$ (Linear). If the input array has 10 million items, `duplicate_list` will also grow to hold 10 million items, consuming a massive amount of *extra* memory.
+
+---
+
+### Why do we care?
+
+When comparing algorithms, we usually care more about **Auxiliary Space** than total space complexity.
+
+Why? Because the input data size is out of the algorithm's control—it's given to us as-is. What we *can* control is how efficiently our code handles that data. An algorithm with $O(1)$ auxiliary space is called an **in-place algorithm**, and it is highly prized in software engineering because it runs efficiently even when memory is scarce.

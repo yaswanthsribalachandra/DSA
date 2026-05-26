@@ -1,0 +1,5 @@
+3. Average Case (Θ - Big Theta)
+The average case represents the expected behavior of the algorithm over a large number of random inputs. It gives you a realistic idea of how the code performs in the real world day-to-day. We use the symbol Θ (Theta) to denote it.
+Example: Searching for that same card over hundreds of random rounds.
+The Scenario: On average, you will find the card somewhere around the middle of the deck.
+Time Complexity: O(n/2), which mathematically simplifies down to O(n).

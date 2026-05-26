@@ -1,0 +1,63 @@
+**Total Space Complexity** is the entire amount of memory an algorithm requires to run to completion.
+
+Unlike auxiliary space—which only looks at the *extra* memory your code creates—total space complexity looks at the **big picture**. It combines the memory needed for your input data with the memory needed for your code's internal logic.
+
+---
+
+### The Formula
+
+You can think of total space complexity as a simple equation:
+
+$$\text{Total Space Complexity} = \text{Input Space} + \text{Auxiliary Space}$$
+
+* **Input Space:** The memory required to store the starting data (e.g., the array, string, or matrix passed into your function).
+* **Auxiliary Space:** The temporary memory allocated by the algorithm while it runs (e.g., new arrays, recursion stacks, or loop variables).
+
+---
+
+### A Breakdown of the Components
+
+To visualize how total space is calculated, consider this breakdown of what actually lives inside your computer's RAM when a program runs:
+
+| Component | What it includes | Type of Space |
+| --- | --- | --- |
+| **Input Data** | The arguments/parameters passed into the function. | Input Space |
+| **Instruction Space** | The memory required to store the compiled version of your actual code. | Auxiliary Space |
+| **Environmental Stack** | Memory used to keep track of function calls (crucial for recursion). | Auxiliary Space |
+| **Data Space** | Temporary variables, constants, and dynamic memory allocated during runtime. | Auxiliary Space |
+
+---
+
+### An Example: Total Space in Action
+
+Let's look at a function that takes an array of $n$ elements and creates a reversed copy of it.
+
+```python
+def reverse_array_copy(arr):
+    reversed_list = []                    # Auxiliary Space starts here
+    for i in range(len(arr) - 1, -1, -1):
+        reversed_list.append(arr[i])
+    return reversed_list
+
+```
+
+If the input array `arr` has $n$ elements:
+
+1. **Input Space:** $O(n)$ because the function must hold the original array in memory.
+2. **Auxiliary Space:** $O(n)$ because `reversed_list` will eventually grow to size $n$.
+
+Therefore, the **Total Space Complexity** is:
+
+$$O(n) \text{ (Input)} + O(n) \text{ (Auxiliary)} = O(2n) \rightarrow O(n)$$
+
+---
+
+### Why "Total Space" Can Be Misleading
+
+In professional software engineering and technical interviews, when someone asks, *"What is the space complexity of this algorithm?"*, they are almost always actually asking for the **Auxiliary Space**.
+
+Here is why:
+If you are handed an array of 1 million integers to sort, that 1 million integers already exists in memory. You didn't create it; it was given to you. Because the input space is a fixed constraint ($O(n)$), measuring total space doesn't tell you how efficient *your specific code* is.
+
+By focusing on auxiliary space instead of total space, engineers can judge whether your algorithm is a "memory hog" or if it manipulates data efficiently in-place.
+

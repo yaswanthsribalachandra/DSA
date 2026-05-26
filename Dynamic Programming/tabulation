@@ -1,0 +1,31 @@
+Tabulation (Bottom-Up)
+Tabulation avoids recursion entirely. It starts by solving the absolute smallest subproblems first (the base cases) and fills out a table (usually an array or matrix) step-by-step. It uses those early table entries to calculate the next, larger entries until it eventually reaches the final answer.
+How it feels: "Let's start from the very beginning. I'll solve the absolute smallest pieces first, lay them out in a row, and use them to build up to the big final answer."
+Implementation: Usually involves loops (iterative) and an array/table initialized from scratch.
+The Code (Fibonacci with Tabulation)
+Python
+def fib_tab(n):
+    if n <= 1:
+        return n
+        
+    # 1. Initialize the table
+    dp = [0] * (n + 1)
+    
+    # 2. Base cases
+    dp[0] = 0
+    dp[1] = 1
+    
+    # 3. Fill the table iteratively
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
+        
+    return dp[n]
+Key Differences At a Glance
+Feature	Memoization (Top-Down)	Tabulation (Bottom-Up)
+Approach	Recursively breaks down the big problem.	Iteratively builds up from the base cases.
+Call Stack	Uses the call stack (risk of StackOverflowError for massive inputs).	No call stack overhead; purely iterative.
+Subproblem Solving	Solves only the subproblems that are actually needed to get the final answer.	Solves every single subproblem from 0 to n sequentially.
+Ease of Thinking	Generally easier to conceptualize if you already have a recursive definition.	Can be harder to figure out the exact ordering/loop structure required.
+Which one should you choose?
+Choose Memoization if the total subproblem space is massive, but the actual problem only requires you to visit a small fraction of those states. It saves time by ignoring the paths you don't need.
+Choose Tabulation if you need to solve all subproblems anyway. It is usually faster in practice because it avoids the overhead of thousands of recursive function calls, and it often allows you to optimize space even further (e.g., only keeping track of the last two variables instead of a whole array).

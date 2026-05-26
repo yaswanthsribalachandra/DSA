@@ -1,0 +1,5 @@
+1. Best Case (Ω - Big Omega)
+The best case is the absolute ideal scenario. It represents the minimum number of steps the algorithm needs to take. We use the mathematical symbol Ω (Omega) to denote it.
+Example: Searching for a specific card in a shuffled deck.
+The Scenario: The very first card you flip over happens to be the exact card you were looking for.
+Time Complexity: O(1) (Constant time).

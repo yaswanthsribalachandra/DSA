@@ -1,0 +1,17 @@
+1. Memoization (Top-Down)
+Memoization starts with the original, big problem and recursively breaks it down into smaller subproblems. Whenever it solves a subproblem, it caches (stores) the result in a lookup table (like an array or dictionary). If it encounters that same subproblem again, it simply looks up the answer instead of recalculating it.
+How it feels: "Let's solve the big problem. Oh, I need this smaller piece first? Let me go calculate that, save it, and then come back to the big problem."
+Implementation: Usually involves recursion and a global storage mechanism (hash map or array).
+The Code (Fibonacci with Memoization)
+Python
+def fib_memo(n, memo={}):
+    # Base cases
+    if n <= 1:
+        return n
+    
+    # Check if we already solved this subproblem
+    if n not in memo:
+        # Recursively solve and store the result
+        memo[n] = fib_memo(n - 1, memo) + fib_memo(n - 2, memo)
+        
+    return memo[n]

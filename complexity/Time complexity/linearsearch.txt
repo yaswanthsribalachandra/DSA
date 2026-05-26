@@ -1,0 +1,15 @@
+A Real Code Example: Linear Search
+Let's look at a simple Python function that searches for a target number inside a list:
+Python
+def search_number(arr, target):
+    for item in arr:
+        if item == target:
+            return True  # Found it!
+    return False  # Not in the list
+If our list is [5, 2, 9, 1, 7]:
+Best Case: We search for 5. The loop runs exactly 1 time.
+Complexity: Ω(1)
+Worst Case: We search for 7 (or 100 which isn't there). The loop has to check all n elements.
+Complexity: O(n)
+Average Case: We search for random numbers. On average, we look through about n/2 elements.
+Complexity: Θ(n)
